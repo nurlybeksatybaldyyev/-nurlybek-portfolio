@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aktown — AI Motion Design</title>
+<meta name="description" content="Портфолио Nurlybek / Aktown — AI-генеративный видеоконтент и motion design для брендов." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #05070c;
+    --bg-raised: #0b0f18;
+    --line: #1c2230;
+    --ink: #e9ecf3;
+    --ink-dim: #8993a8;
+    --blue: #2f6fed;
+    --blue-soft: #16294f;
+    --radius: 10px;
+    --maxw: 980px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.disp{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  /* checkerboard motif — nod to the Studio16/Aktown IG grid */
+  .checker{
+    position:absolute;
+    width:220px; height:220px;
+    background-image:
+      linear-gradient(45deg, var(--blue-soft) 25%, transparent 25%),
+      linear-gradient(-45deg, var(--blue-soft) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, var(--blue-soft) 75%),
+      linear-gradient(-45deg, transparent 75%, var(--blue-soft) 75%);
+    background-size:28px 28px;
+    background-position:0 0, 0 14px, 14px -14px, -14px 0px;
+    opacity:.35;
+    pointer-events:none;
+  }
+
+  header.hero{
+    position:relative;
+    overflow:hidden;
+    padding:96px 0 72px;
+    border-bottom:1px solid var(--line);
+  }
+  header.hero .checker{ top:-40px; right:-40px; }
+  .eyebrow{
+    color:var(--blue);
+    font-size:14px;
+    font-weight:600;
+    margin-bottom:18px;
+    opacity:0;
+    animation:rise .6s ease forwards;
+  }
+  h1.title{
+    font-size:clamp(40px, 6vw, 68px);
+    line-height:1.02;
+    max-width:780px;
+    opacity:0;
+    animation:rise .7s ease forwards;
+    animation-delay:.08s;
+  }
+  .lede{
+    margin-top:22px;
+    max-width:560px;
+    color:var(--ink-dim);
+    font-size:17px;
+    opacity:0;
+    animation:rise .7s ease forwards;
+    animation-delay:.16s;
+  }
+  @keyframes rise{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  nav.jump{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:36px;
+  }
+  nav.jump a{
+    font-size:13px;
+    color:var(--ink-dim);
+    text-decoration:none;
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:7px 14px;
+    transition:border-color .15s, color .15s;
+  }
+  nav.jump a:hover{ border-color:var(--blue); color:var(--ink); }
+
+  section.cat{ padding:64px 0; border-bottom:1px solid var(--line); }
+  section.cat:last-of-type{ border-bottom:none; }
+  .cat-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:34px;
+  }
+  .cat-head .mark{ font-size:22px; }
+  .cat-head h2{ font-size:26px; }
+  .cat-head .count{ color:var(--ink-dim); font-size:14px; margin-left:auto; }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:28px;
+  }
+  @media (max-width:720px){ .grid{ grid-template-columns:1fr; } }
+
+  .card{
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    transition:border-color .15s, transform .15s;
+  }
+  .card:hover{ border-color:var(--blue); transform:translateY(-2px); }
+
+  .video-cell{
+    position:relative;
+    aspect-ratio:16/9;
+    background:#03040a;
+    border-bottom:1px solid var(--line);
+  }
+  .video-cell iframe{
+    width:100%; height:100%; border:0; display:block;
+  }
+  .video-cell.empty{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+  }
+  .video-cell.empty span{
+    font-size:13px;
+    color:var(--ink-dim);
+    border:1px dashed var(--line);
+    border-radius:8px;
+    padding:10px 16px;
+  }
+
+  .card-body{ padding:18px 20px 22px; }
+  .card-body h3{ font-size:17px; margin-bottom:8px; }
+  .card-body p{ font-size:14px; color:var(--ink-dim); margin:0; }
+
+  section.tools{ padding:56px 0; }
+  section.tools h2{ font-size:22px; margin-bottom:18px; }
+  .tool-list{
+    columns:2;
+    gap:32px;
+    font-size:14px;
+    color:var(--ink-dim);
+  }
+  .tool-list li{ break-inside:avoid; margin-bottom:8px; }
+  @media (max-width:600px){ .tool-list{ columns:1; } }
+
+  footer{
+    padding:48px 0 64px;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  footer a.ig{
+    color:var(--blue);
+    text-decoration:none;
+    font-weight:500;
+  }
+  footer .note{ color:var(--ink-dim); font-size:13px; }
+
+  ::selection{ background:var(--blue); color:#fff; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="checker"></div>
+  <div class="wrap">
+    <div class="eyebrow">Aktown · AI motion design</div>
+    <h1 class="title">Генеративное видео и motion design для брендов, которые не хотят выглядеть сгенерированными.</h1>
+    <p class="lede">Продуктовая AI-съёмка, кинематографичные короткометражки и брендинг-ролики — от промпта до готового кадра.</p>
+    <nav class="jump" id="jump"></nav>
+  </div>
+</header>
+
+<main class="wrap" id="sections"></main>
+
+<section class="tools wrap">
+  <h2>Инструменты и подход</h2>
+  <ul class="tool-list">
+    <li>Higgsfield — Nano Banana 2, Seedance, Kling 3.0, Cinema Studio</li>
+    <li>GPT Image 2</li>
+    <li>Google Veo 3.1 Fast</li>
+    <li>Soul Cinema</li>
+    <li>Kling Omni Edit — видео-монтаж и композитинг</li>
+    <li>Adobe After Effects</li>
+  </ul>
+</section>
+
+<footer class="wrap">
+  <a class="ig" href="https://instagram.com/cuzgladiolus.exe" target="_blank" rel="noopener">@cuzgladiolus.exe</a>
+  <span class="note">Aktown — AI motion design</span>
+</footer>
+
+<script>
+/* ---------------------------------------------------------------
+   Чтобы добавить видео: вставь YouTube ID (кусок ссылки после v=)
+   в поле youtubeId у нужного проекта. Пусто — покажется заглушка.
+------------------------------------------------------------------*/
+const CATEGORIES = [
+  {
+    id: "ads",
+    mark: "🎬",
+    title: "AI-реклама и продуктовая съёмка",
+    projects: [
+      { title: "Umeko Air Plus", desc: "Мультиклиповая Pixar-style рекламная кампания для очистителя воздуха — сквозные персонажи в разных сценах.", youtubeId: "" },
+      { title: "USHU Festival", desc: "Брендированные стаканы, авторские варианты крышек, 3D-анимированный постер концерта на LED-экране.", youtubeId: "" },
+      { title: "revêl (дом цветов)", desc: "Кинематографичный рекламный концепт и ливрея/брендинг автомобиля для цветочного бренда.", youtubeId: "" },
+      { title: "Премиальные украшения", desc: "Мульти-ракурсная предметная съёмка украшения, собранная в анимированный рекламный ролик.", youtubeId: "" }
+    ]
+  },
+  {
+    id: "films",
+    mark: "🎞",
+    title: "Cinematic short-films",
+    projects: [
+      { title: "Батыр и беглец", desc: "AI-короткометражный фильм: казахская степь, батыр и сатқын, артхаусный тон, пятисценная структура.", youtubeId: "" },
+      { title: "bir auyl", desc: "Кинематографичная короткометражная работа о казахской степи.", youtubeId: "" }
+    ]
+  },
+  {
+    id: "brand",
+    mark: "🏷",
+    title: "Брендинг и айдентика",
+    projects: [
+      { title: "ЖАС ҚАНАТ", desc: "AI-видео для школы-лицея с интеграцией логотипа в сценах студенческой жизни.", youtubeId: "" },
+      { title: "Roku — вышивка логотипа", desc: "Макросъёмка процесса вышивки логотипа на футболке, в стиле Levi's x Nike.", youtubeId: "" }
+    ]
+  },
+  {
+    id: "concept",
+    mark: "⚡",
+    title: "Концептные и вирусные ролики",
+    projects: [
+      { title: "Кигуруми-реклама", desc: "Рекламный ролик в японском «упоротом» стиле — персонажи в костюмах животных.", youtubeId: "" },
+      { title: "Overman — питч к открытию", desc: "Три видео-концепта для магазина одежды: кайдзю, дрон-инфографика, смена одежды по щелчку.", youtubeId: "" }
+    ]
+  }
+];
+
+const sectionsEl = document.getElementById("sections");
+const jumpEl = document.getElementById("jump");
+
+CATEGORIES.forEach(cat => {
+  const a = document.createElement("a");
+  a.href = "#" + cat.id;
+  a.textContent = cat.mark + " " + cat.title;
+  jumpEl.appendChild(a);
+
+  const section = document.createElement("section");
+  section.className = "cat";
+  section.id = cat.id;
+
+  const head = document.createElement("div");
+  head.className = "cat-head";
+  head.innerHTML = `<span class="mark">${cat.mark}</span><h2>${cat.title}</h2><span class="count">${cat.projects.length} проект${cat.projects.length === 1 ? "" : "а"}</span>`;
+  section.appendChild(head);
+
+  const grid = document.createElement("div");
+  grid.className = "grid";
+
+  cat.projects.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const videoCell = document.createElement("div");
+    if (p.youtubeId) {
+      videoCell.className = "video-cell";
+      videoCell.innerHTML = `<iframe src="https://www.youtube.com/embed/${p.youtubeId}" title="${p.title}" allowfullscreen loading="lazy"></iframe>`;
+    } else {
+      videoCell.className = "video-cell empty";
+      videoCell.innerHTML = `<span>видео скоро</span>`;
+    }
+    card.appendChild(videoCell);
+
+    const body = document.createElement("div");
+    body.className = "card-body";
+    body.innerHTML = `<h3>${p.title}</h3><p>${p.desc}</p>`;
+    card.appendChild(body);
+
+    grid.appendChild(card);
+  });
+
+  section.appendChild(grid);
+  sectionsEl.appendChild(section);
+});
+</script>
+
+</body>
+</html>

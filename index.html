@@ -1,323 +1,252 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Nurlybek — AI Motion Design</title>
-<meta name="description" content="Портфолио Nurlybek / Aktown — AI-генеративный видеоконтент и motion design для брендов." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nurlybek — AI-визуал и моушн</title>
+<meta name="description" content="Nurlybek — AI-визуал, реклама, моушн-дизайн и кино. Актау, Казахстан.">
+<meta property="og:title" content="Nurlybek — AI-визуал и моушн">
+<meta property="og:description" content="AI-реклама, предметная съёмка, моушн и 3D.">
+<meta name="theme-color" content="#1F3BFF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231F3BFF'/%3E%3Ctext x='16' y='23' font-family='Arial Black' font-size='20' text-anchor='middle' fill='%23F2F0EA'%3EN%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&amp;family=IBM+Plex+Mono:wght@400;500;700&amp;display=swap">
 <style>
-  :root{
-    --bg: #05070c;
-    --bg-raised: #0b0f18;
-    --line: #1c2230;
-    --ink: #e9ecf3;
-    --ink-dim: #8993a8;
-    --blue: #2f6fed;
-    --blue-soft: #16294f;
-    --radius: 10px;
-    --maxw: 980px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Inter', -apple-system, sans-serif;
-    line-height:1.5;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3,.disp{
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:600;
-    letter-spacing:-0.01em;
-    margin:0;
-  }
-  a{color:inherit;}
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+body{margin:0;background:#F2F0EA}
+section{scroll-margin-top:64px}
+html{scroll-behavior:smooth}
+a{color:#0A0A0A}a:hover{color:#1F3BFF}
+*{box-sizing:border-box}
+::selection{background:#1F3BFF;color:#F2F0EA}
 
-  /* checkerboard motif — nod to the Studio16/Aktown IG grid */
-  .checker{
-    position:absolute;
-    width:220px; height:220px;
-    background-image:
-      linear-gradient(45deg, var(--blue-soft) 25%, transparent 25%),
-      linear-gradient(-45deg, var(--blue-soft) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, var(--blue-soft) 75%),
-      linear-gradient(-45deg, transparent 75%, var(--blue-soft) 75%);
-    background-size:28px 28px;
-    background-position:0 0, 0 14px, 14px -14px, -14px 0px;
-    opacity:.35;
-    pointer-events:none;
-  }
+@keyframes rise{from{opacity:0;transform:translateY(110%)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes blink{50%{opacity:0}}
 
-  header.hero{
-    position:relative;
-    overflow:hidden;
-    padding:96px 0 72px;
-    border-bottom:1px solid var(--line);
-  }
-  header.hero .checker{ top:-40px; right:-40px; }
-  .eyebrow{
-    color:var(--blue);
-    font-size:14px;
-    font-weight:600;
-    margin-bottom:18px;
-    opacity:0;
-    animation:rise .6s ease forwards;
-  }
-  h1.title{
-    font-size:clamp(40px, 6vw, 68px);
-    line-height:1.02;
-    max-width:780px;
-    opacity:0;
-    animation:rise .7s ease forwards;
-    animation-delay:.08s;
-  }
-  .lede{
-    margin-top:22px;
-    max-width:560px;
-    color:var(--ink-dim);
-    font-size:17px;
-    opacity:0;
-    animation:rise .7s ease forwards;
-    animation-delay:.16s;
-  }
-  @keyframes rise{
-    from{opacity:0; transform:translateY(14px);}
-    to{opacity:1; transform:translateY(0);}
-  }
+.mask{overflow:hidden;display:block}
+.rise{display:block;animation:rise 1s cubic-bezier(.16,1,.3,1) both}
+.d1{animation-delay:.08s}.d2{animation-delay:.18s}.d3{animation-delay:.28s}.d4{animation-delay:.42s}.d5{animation-delay:.6s}.d6{animation-delay:.8s}
+.fade{animation:fadeUp .9s cubic-bezier(.16,1,.3,1) both}
+.wipe{animation:wipe 1.1s cubic-bezier(.77,0,.18,1) both}
+.track{display:flex;width:max-content;animation:marquee 28s linear infinite}
+.dot{animation:blink 1.2s steps(1) infinite}
 
-  nav.jump{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:36px;
-  }
-  nav.jump a{
-    font-size:13px;
-    color:var(--ink-dim);
-    text-decoration:none;
-    border:1px solid var(--line);
-    border-radius:999px;
-    padding:7px 14px;
-    transition:border-color .15s, color .15s;
-  }
-  nav.jump a:hover{ border-color:var(--blue); color:var(--ink); }
+@supports (animation-timeline: view()){
+  .sr{animation:fadeUp linear both;animation-timeline:view();animation-range:entry 0% entry 55%}
+  .srw{animation:wipe linear both;animation-timeline:view();animation-range:entry 5% entry 70%}
+}
 
-  section.cat{ padding:64px 0; border-bottom:1px solid var(--line); }
-  section.cat:last-of-type{ border-bottom:none; }
-  .cat-head{
-    display:flex;
-    align-items:baseline;
-    gap:14px;
-    margin-bottom:34px;
-  }
-  .cat-head .mark{ font-size:22px; }
-  .cat-head h2{ font-size:26px; }
-  .cat-head .count{ color:var(--ink-dim); font-size:14px; margin-left:auto; }
+.card{transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s cubic-bezier(.16,1,.3,1)}
+.card:hover{transform:translate(-6px,-6px);box-shadow:12px 12px 0 #0A0A0A}
+.card:hover .thumb{background:#1F3BFF;color:#F2F0EA}
+.thumb{transition:background .35s,color .35s}
+.btn{transition:transform .2s,box-shadow .2s,background .2s,color .2s}
+.btn:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 #0A0A0A;color:#0A0A0A}
+.navlink{text-decoration:none;transition:background .2s,color .2s}
+.navlink:hover{background:#0A0A0A;color:#F2F0EA}
+.svc{transition:background .3s,color .3s}
+.svc:hover{background:#0A0A0A;color:#F2F0EA}
 
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:28px;
-  }
-  @media (max-width:720px){ .grid{ grid-template-columns:1fr; } }
-
-  .card{
-    background:var(--bg-raised);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    overflow:hidden;
-    transition:border-color .15s, transform .15s;
-  }
-  .card:hover{ border-color:var(--blue); transform:translateY(-2px); }
-
-  .video-cell{
-    position:relative;
-    aspect-ratio:16/9;
-    background:#03040a;
-    border-bottom:1px solid var(--line);
-  }
-  .video-cell iframe{
-    width:100%; height:100%; border:0; display:block;
-  }
-  .video-cell.empty{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:20px;
-  }
-  .video-cell.empty span{
-    font-size:13px;
-    color:var(--ink-dim);
-    border:1px dashed var(--line);
-    border-radius:8px;
-    padding:10px 16px;
-  }
-
-  .card-body{ padding:18px 20px 22px; }
-  .card-body h3{ font-size:17px; margin-bottom:8px; }
-  .card-body p{ font-size:14px; color:var(--ink-dim); margin:0; }
-
-  section.tools{ padding:56px 0; }
-  section.tools h2{ font-size:22px; margin-bottom:18px; }
-  .tool-list{
-    columns:2;
-    gap:32px;
-    font-size:14px;
-    color:var(--ink-dim);
-  }
-  .tool-list li{ break-inside:avoid; margin-bottom:8px; }
-  @media (max-width:600px){ .tool-list{ columns:1; } }
-
-  footer{
-    padding:48px 0 64px;
-    border-top:1px solid var(--line);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:16px;
-  }
-  footer a.ig{
-    color:var(--blue);
-    text-decoration:none;
-    font-weight:500;
-  }
-  footer .note{ color:var(--ink-dim); font-size:13px; }
-
-  ::selection{ background:var(--blue); color:#fff; }
+@media (prefers-reduced-motion: reduce){
+  .rise,.fade,.wipe,.sr,.srw,.track,.dot{animation:none !important}
+  .card,.btn,.svc{transition:none}
+}
 </style>
 </head>
 <body>
+<div style="font-family: 'IBM Plex Mono', ui-monospace, 'Courier New', monospace; color: #0A0A0A; background: #F2F0EA; min-height: 100vh; overflow-x: hidden">
 
-<header class="hero">
-  <div class="checker"></div>
-  <div class="wrap">
-    <div class="eyebrow">Nurlybek · AI motion design</div>
-    <h1 class="title">Генеративное видео и motion design для брендов, которые не хотят выглядеть сгенерированными.</h1>
-    <p class="lede">Продуктовая AI-съёмка, кинематографичные короткометражки и брендинг-ролики — от промпта до готового кадра.</p>
-    <nav class="jump" id="jump"></nav>
+  <!-- NAV -->
+  <header style="position: sticky; top: 0; z-index: 10; background: #F2F0EA; border-bottom: 3px solid #0A0A0A; display: flex; flex-wrap: wrap; align-items: stretch; justify-content: space-between">
+    <a href="#top" class="navlink" style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: 18px; letter-spacing: -0.02em; padding: 18px 24px; border-right: 3px solid #0A0A0A; display: flex; align-items: center; gap: 10px">NURLYBEK<span class="dot" style="display: inline-block; width: 10px; height: 10px; background: #1F3BFF"></span></a>
+    <nav style="display: flex; flex-wrap: wrap; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em">
+      <a href="#works" class="navlink" style="padding: 18px 22px; border-left: 3px solid #0A0A0A; display: flex; align-items: center; min-height: 44px">Работы</a>
+      <a href="#services" class="navlink" style="padding: 18px 22px; border-left: 3px solid #0A0A0A; display: flex; align-items: center; min-height: 44px">Услуги</a>
+      <a href="#about" class="navlink" style="padding: 18px 22px; border-left: 3px solid #0A0A0A; display: flex; align-items: center; min-height: 44px">Обо мне</a>
+      <a href="#contact" class="navlink" style="padding: 18px 22px; border-left: 3px solid #0A0A0A; background: #1F3BFF; color: #F2F0EA; display: flex; align-items: center; min-height: 44px">Связаться →</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" style="border-bottom: 3px solid #0A0A0A; padding: clamp(32px, 5vw, 72px) clamp(20px, 3vw, 40px) 0">
+    <div class="fade d1" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: clamp(24px, 4vw, 56px)">
+      <span>[ ПОРТФОЛИО ]</span>
+      <span>Актау, Казахстан — работаю удалённо</span>
+      <span>AI-визуал / моушн / кино</span>
+    </div>
+
+    <h1 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: 110px; line-height: 0.88; letter-spacing: -0.055em; margin: 0; text-transform: uppercase">
+      <span class="mask"><span class="rise d1">Делаю</span></span>
+      <span class="mask"><span class="rise d2" style="color: #1F3BFF">рекламу,</span></span>
+      <span class="mask"><span class="rise d3">которую</span></span>
+      <span class="mask"><span class="rise d4">досматривают.</span></span>
+    </h1>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0; margin-top: clamp(32px, 5vw, 64px); border-top: 3px solid #0A0A0A; margin-left: calc(-1 * clamp(20px, 3vw, 40px)); margin-right: calc(-1 * clamp(20px, 3vw, 40px))">
+      <p class="fade d5" style="margin: 0; padding: 28px clamp(20px, 3vw, 40px); font-size: 17px; line-height: 1.55; border-right: 3px solid #0A0A0A">AI-генерация для брендов: предметные съёмки без студии, рекламные ролики, 3D и моушн-дизайн, кинематографичные короткие метры.</p>
+      <div class="fade d6" style="padding: 28px clamp(20px, 3vw, 40px); display: flex; flex-wrap: wrap; gap: 16px; align-items: center">
+        <a href="#works" class="btn" style="text-decoration: none; background: #0A0A0A; color: #F2F0EA; border: 3px solid #0A0A0A; padding: 16px 26px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 14px; min-height: 44px">Смотреть работы ↓</a>
+        <a href="#contact" class="btn" style="text-decoration: none; background: #F2F0EA; color: #0A0A0A; border: 3px solid #0A0A0A; padding: 16px 26px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 14px; min-height: 44px">Обсудить проект</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div aria-hidden="true" style="background: #1F3BFF; color: #F2F0EA; border-bottom: 3px solid #0A0A0A; overflow: hidden; padding: 18px 0; font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 700; font-size: clamp(20px, 2.6vw, 36px); text-transform: uppercase; white-space: nowrap">
+    <div class="track">
+      <span style="padding-right: 40px">AI-реклама ✱ Предметная съёмка ✱ Моушн-дизайн ✱ 3D ✱ Кино ✱ Брендинг ✱ </span>
+      <span style="padding-right: 40px">AI-реклама ✱ Предметная съёмка ✱ Моушн-дизайн ✱ 3D ✱ Кино ✱ Брендинг ✱ </span>
+    </div>
   </div>
-</header>
 
-<main class="wrap" id="sections"></main>
+  <!-- WORKS -->
+  <section id="works" style="padding: clamp(48px, 7vw, 112px) clamp(20px, 3vw, 40px); border-bottom: 3px solid #0A0A0A">
+    <div class="sr" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: clamp(32px, 4vw, 56px)">
+      <h2 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: clamp(40px, 7vw, 112px); line-height: 0.9; letter-spacing: -0.05em; margin: 0; text-transform: uppercase">Работы<sup style="font-size: 0.3em; letter-spacing: 0; vertical-align: top; color: #1F3BFF">(08)</sup></h2>
+      <p style="margin: 0; max-width: 360px; font-size: 15px; line-height: 1.5">Коммерция, бренды и авторское кино. Нажмите на карточку, чтобы открыть видео.</p>
+    </div>
 
-<section class="tools wrap">
-  <h2>Инструменты и подход</h2>
-  <ul class="tool-list">
-    <li>Higgsfield — Nano Banana 2, Seedance, Kling 3.0, Cinema Studio</li>
-    <li>GPT Image 2</li>
-    <li>Google Veo 3.1 Fast</li>
-    <li>Soul Cinema</li>
-    <li>Kling Omni Edit — видео-монтаж и композитинг</li>
-    <li>Adobe After Effects</li>
-  </ul>
-</section>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 28px">
 
-<footer class="wrap">
-  <a class="ig" href="https://instagram.com/cuzgladiolus.exe" target="_blank" rel="noopener">@cuzgladiolus.exe</a>
-  <span class="note">Aktown — AI motion design</span>
-</footer>
+      <a href="#" class="card sr" style="text-decoration: none; color: #0A0A0A; border: 3px solid #0A0A0A; background: #F2F0EA; display: flex; flex-direction: column">
+        <div class="thumb" style="aspect-ratio: 16 / 10; border-bottom: 3px solid #0A0A0A; background: #DAD7CE; display: flex; align-items: center; justify-content: center; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em">[ превью видео ]</div>
+        <div style="padding: 20px; display: flex; flex-direction: column; gap: 10px">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em"><span>01</span><span>Реклама / 3D-анимация</span></div>
+          <h3 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; margin: 0">Umeko Air Plus</h3>
+          <p style="margin: 0; font-size: 14px; line-height: 1.5">Серия анимационных роликов в стиле Pixar для очистителя воздуха.</p>
+        </div>
+      </a>
 
-<script>
-/* ---------------------------------------------------------------
-   Чтобы добавить видео: вставь YouTube ID (кусок ссылки после v=)
-   в поле youtubeId у нужного проекта. Пусто — покажется заглушка.
-------------------------------------------------------------------*/
-const CATEGORIES = [
-  {
-    id: "ads",
-    mark: "🎬",
-    title: "AI-реклама и продуктовая съёмка",
-    projects: [
-      { title: "Umeko Air Plus", desc: "Мультиклиповая Pixar-style рекламная кампания для очистителя воздуха — сквозные персонажи в разных сценах.", youtubeId: "" },
-      { title: "USHU Festival", desc: "Брендированные стаканы, авторские варианты крышек, 3D-анимированный постер концерта на LED-экране.", youtubeId: "" },
-      { title: "revêl (дом цветов)", desc: "Кинематографичный рекламный концепт и ливрея/брендинг автомобиля для цветочного бренда.", youtubeId: "" },
-      { title: "Премиальные украшения", desc: "Мульти-ракурсная предметная съёмка украшения, собранная в анимированный рекламный ролик.", youtubeId: "" }
-    ]
-  },
-  {
-    id: "films",
-    mark: "🎞",
-    title: "Cinematic short-films",
-    projects: [
-      { title: "Батыр и беглец", desc: "AI-короткометражный фильм: казахская степь, батыр и сатқын, артхаусный тон, пятисценная структура.", youtubeId: "" },
-      { title: "bir auyl", desc: "Кинематографичная короткометражная работа о казахской степи.", youtubeId: "" }
-    ]
-  },
-  {
-    id: "brand",
-    mark: "🏷",
-    title: "Брендинг и айдентика",
-    projects: [
-      { title: "ЖАС ҚАНАТ", desc: "AI-видео для школы-лицея с интеграцией логотипа в сценах студенческой жизни.", youtubeId: "" },
-      { title: "Roku — вышивка логотипа", desc: "Макросъёмка процесса вышивки логотипа на футболке, в стиле Levi's x Nike.", youtubeId: "" }
-    ]
-  },
-  {
-    id: "concept",
-    mark: "⚡",
-    title: "Концептные и вирусные ролики",
-    projects: [
-      { title: "Кигуруми-реклама", desc: "Рекламный ролик в японском «упоротом» стиле — персонажи в костюмах животных.", youtubeId: "" },
-      { title: "Overman — питч к открытию", desc: "Три видео-концепта для магазина одежды: кайдзю, дрон-инфографика, смена одежды по щелчку.", youtubeId: "" }
-    ]
-  }
-];
+      <a href="#" class="card sr" style="text-decoration: none; color: #0A0A0A; border: 3px solid #0A0A0A; background: #F2F0EA; display: flex; flex-direction: column">
+        <div class="thumb" style="aspect-ratio: 16 / 10; border-bottom: 3px solid #0A0A0A; background: #DAD7CE; display: flex; align-items: center; justify-content: center; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em">[ превью видео ]</div>
+        <div style="padding: 20px; display: flex; flex-direction: column; gap: 10px">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em"><span>02</span><span>Фестиваль / LED / Мерч</span></div>
+          <h3 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; margin: 0">USHU Festival</h3>
+          <p style="margin: 0; font-size: 14px; line-height: 1.5">Брендированные стаканы, варианты крышек с артистами и анимированная 3D-афиша для LED-экрана.</p>
+        </div>
+      </a>
 
-const sectionsEl = document.getElementById("sections");
-const jumpEl = document.getElementById("jump");
+      <a href="#" class="card sr" style="text-decoration: none; color: #0A0A0A; border: 3px solid #0A0A0A; background: #F2F0EA; display: flex; flex-direction: column">
+        <div class="thumb" style="aspect-ratio: 16 / 10; border-bottom: 3px solid #0A0A0A; background: #DAD7CE; display: flex; align-items: center; justify-content: center; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em">[ превью видео ]</div>
+        <div style="padding: 20px; display: flex; flex-direction: column; gap: 10px">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em"><span>03</span><span>Ювелирка / Предметка</span></div>
+          <h3 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; margin: 0">Серебряное колье</h3>
+          <p style="margin: 0; font-size: 14px; line-height: 1.5">Премиальная предметная съёмка с разных ракурсов, собранная в 35-секундный анимированный ролик.</p>
+        </div>
+      </a>
 
-CATEGORIES.forEach(cat => {
-  const a = document.createElement("a");
-  a.href = "#" + cat.id;
-  a.textContent = cat.mark + " " + cat.title;
-  jumpEl.appendChild(a);
+      <a href="#" class="card sr" style="text-decoration: none; color: #0A0A0A; border: 3px solid #0A0A0A; background: #F2F0EA; display: flex; flex-direction: column">
+        <div class="thumb" style="aspect-ratio: 16 / 10; border-bottom: 3px solid #0A0A0A; background: #DAD7CE; display: flex; align-items: center; justify-content: center; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em">[ превью видео ]</div>
+        <div style="padding: 20px; display: flex; flex-direction: column; gap: 10px">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em"><span>04</span><span>Недвижимость / Композитинг</span></div>
+          <h3 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; margin: 0">Prospera Development</h3>
+          <p style="margin: 0; font-size: 14px; line-height: 1.5">Брендированный пляжный контент: яхта, пикник и зонты, вписанные в реальные кадры побережья.</p>
+        </div>
+      </a>
 
-  const section = document.createElement("section");
-  section.className = "cat";
-  section.id = cat.id;
+      <a href="#" class="card sr" style="text-decoration: none; color: #0A0A0A; border: 3px solid #0A0A0A; background: #F2F0EA; display: flex; flex-direction: column">
+        <div class="thumb" style="aspect-ratio: 16 / 10; border-bottom: 3px solid #0A0A0A; background: #DAD7CE; display: flex; align-items: center; justify-content: center; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em">[ превью видео ]</div>
+        <div style="padding: 20px; display: flex; flex-direction: column; gap: 10px">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em"><span>05</span><span>Образование / Seedance</span></div>
+          <h3 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; margin: 0">ЖАС ҚАНАТ</h3>
+          <p style="margin: 0; font-size: 14px; line-height: 1.5">Брендинговые ролики для школы-лицея: логотип в сценах хоккея, футбола и хора.</p>
+        </div>
+      </a>
 
-  const head = document.createElement("div");
-  head.className = "cat-head";
-  head.innerHTML = `<span class="mark">${cat.mark}</span><h2>${cat.title}</h2><span class="count">${cat.projects.length} проект${cat.projects.length === 1 ? "" : "а"}</span>`;
-  section.appendChild(head);
+      <a href="#" class="card sr" style="text-decoration: none; color: #0A0A0A; border: 3px solid #0A0A0A; background: #F2F0EA; display: flex; flex-direction: column">
+        <div class="thumb" style="aspect-ratio: 16 / 10; border-bottom: 3px solid #0A0A0A; background: #DAD7CE; display: flex; align-items: center; justify-content: center; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em">[ превью видео ]</div>
+        <div style="padding: 20px; display: flex; flex-direction: column; gap: 10px">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em"><span>06</span><span>Мода / Макро</span></div>
+          <h3 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; margin: 0">Roku</h3>
+          <p style="margin: 0; font-size: 14px; line-height: 1.5">Макро-ролик о том, как логотип вышивается на чёрной футболке, стежок за стежком.</p>
+        </div>
+      </a>
 
-  const grid = document.createElement("div");
-  grid.className = "grid";
+      <a href="#" class="card sr" style="text-decoration: none; color: #0A0A0A; border: 3px solid #0A0A0A; background: #F2F0EA; display: flex; flex-direction: column">
+        <div class="thumb" style="aspect-ratio: 16 / 10; border-bottom: 3px solid #0A0A0A; background: #DAD7CE; display: flex; align-items: center; justify-content: center; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em">[ превью видео ]</div>
+        <div style="padding: 20px; display: flex; flex-direction: column; gap: 10px">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em"><span>07</span><span>Короткий метр / bir auyl</span></div>
+          <h3 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; margin: 0">Баян Сұлу</h3>
+          <p style="margin: 0; font-size: 14px; line-height: 1.5">Кинематографичный AI-фильм о степи.</p>
+        </div>
+      </a>
 
-  cat.projects.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "card";
+      <a href="#" class="card sr" style="text-decoration: none; color: #0A0A0A; border: 3px solid #0A0A0A; background: #F2F0EA; display: flex; flex-direction: column">
+        <div class="thumb" style="aspect-ratio: 16 / 10; border-bottom: 3px solid #0A0A0A; background: #DAD7CE; display: flex; align-items: center; justify-content: center; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em">[ превью видео ]</div>
+        <div style="padding: 20px; display: flex; flex-direction: column; gap: 10px">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em"><span>08</span><span>Цветы / Брендинг</span></div>
+          <h3 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; margin: 0">revêl</h3>
+          <p style="margin: 0; font-size: 14px; line-height: 1.5">Кинематографичный рекламный концепт и брендинг авто для дома цветов.</p>
+        </div>
+      </a>
 
-    const videoCell = document.createElement("div");
-    if (p.youtubeId) {
-      videoCell.className = "video-cell";
-      videoCell.innerHTML = `<iframe src="https://www.youtube.com/embed/${p.youtubeId}" title="${p.title}" allowfullscreen loading="lazy"></iframe>`;
-    } else {
-      videoCell.className = "video-cell empty";
-      videoCell.innerHTML = `<span>видео скоро</span>`;
-    }
-    card.appendChild(videoCell);
+    </div>
+  </section>
 
-    const body = document.createElement("div");
-    body.className = "card-body";
-    body.innerHTML = `<h3>${p.title}</h3><p>${p.desc}</p>`;
-    card.appendChild(body);
+  <!-- SERVICES -->
+  <section id="services" style="border-bottom: 3px solid #0A0A0A">
+    <div class="sr" style="padding: clamp(48px, 7vw, 112px) clamp(20px, 3vw, 40px) clamp(28px, 3vw, 40px)">
+      <h2 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: clamp(40px, 7vw, 112px); line-height: 0.9; letter-spacing: -0.05em; margin: 0; text-transform: uppercase">Что делаю</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); border-top: 3px solid #0A0A0A">
+      <div class="svc srw" style="padding: 32px clamp(20px, 3vw, 40px); border-right: 3px solid #0A0A0A; border-bottom: 3px solid #0A0A0A; display: flex; flex-direction: column; gap: 48px; min-height: 280px">
+        <span style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: 64px; letter-spacing: -0.05em; line-height: 1">01</span>
+        <div style="display: flex; flex-direction: column; gap: 10px"><h3 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 700; font-size: 22px; margin: 0; text-transform: uppercase">AI-реклама</h3><p style="margin: 0; font-size: 14px; line-height: 1.5">Ролики для брендов от сценария до финального монтажа.</p></div>
+      </div>
+      <div class="svc srw" style="padding: 32px clamp(20px, 3vw, 40px); border-right: 3px solid #0A0A0A; border-bottom: 3px solid #0A0A0A; display: flex; flex-direction: column; gap: 48px; min-height: 280px">
+        <span style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: 64px; letter-spacing: -0.05em; line-height: 1">02</span>
+        <div style="display: flex; flex-direction: column; gap: 10px"><h3 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 700; font-size: 22px; margin: 0; text-transform: uppercase">Предметная съёмка</h3><p style="margin: 0; font-size: 14px; line-height: 1.5">Фото продукта в любом окружении — без студии и реквизита.</p></div>
+      </div>
+      <div class="svc srw" style="padding: 32px clamp(20px, 3vw, 40px); border-right: 3px solid #0A0A0A; border-bottom: 3px solid #0A0A0A; display: flex; flex-direction: column; gap: 48px; min-height: 280px">
+        <span style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: 64px; letter-spacing: -0.05em; line-height: 1">03</span>
+        <div style="display: flex; flex-direction: column; gap: 10px"><h3 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 700; font-size: 22px; margin: 0; text-transform: uppercase">Моушн и 3D</h3><p style="margin: 0; font-size: 14px; line-height: 1.5">Анимация, графика для LED-экранов, визуализация в Blender.</p></div>
+      </div>
+      <div class="svc srw" style="padding: 32px clamp(20px, 3vw, 40px); border-bottom: 3px solid #0A0A0A; display: flex; flex-direction: column; gap: 48px; min-height: 280px">
+        <span style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: 64px; letter-spacing: -0.05em; line-height: 1">04</span>
+        <div style="display: flex; flex-direction: column; gap: 10px"><h3 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 700; font-size: 22px; margin: 0; text-transform: uppercase">Контент для соцсетей</h3><p style="margin: 0; font-size: 14px; line-height: 1.5">Рилсы, карусели и визуал, который держит единый стиль ленты.</p></div>
+      </div>
+    </div>
+  </section>
 
-    grid.appendChild(card);
-  });
+  <!-- ABOUT -->
+  <section id="about" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); border-bottom: 3px solid #0A0A0A">
+    <div style="padding: clamp(48px, 7vw, 112px) clamp(20px, 3vw, 40px); border-right: 3px solid #0A0A0A; background: #0A0A0A; color: #F2F0EA">
+      <h2 class="sr" style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: clamp(40px, 6vw, 96px); line-height: 0.9; letter-spacing: -0.05em; margin: 0; text-transform: uppercase">Обо<br>мне</h2>
+      <p class="sr" style="margin: 40px 0 0; font-size: 17px; line-height: 1.6; max-width: 520px">Я Нурлыбек — делаю AI-визуал для коммерческих клиентов из Актау. Сооснователь Studio 16, студии AI-контента и моушн-дизайна. Параллельно снимаю авторские короткие метры о степи.</p>
+    </div>
+    <div style="padding: clamp(48px, 7vw, 112px) clamp(20px, 3vw, 40px); display: flex; flex-direction: column; gap: 24px; justify-content: center">
+      <span class="sr" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em">[ инструменты ]</span>
+      <div class="sr" style="display: flex; flex-wrap: wrap; gap: 10px">
+        <span style="border: 3px solid #0A0A0A; padding: 10px 16px; font-weight: 700; font-size: 15px">Higgsfield</span>
+        <span style="border: 3px solid #0A0A0A; padding: 10px 16px; font-weight: 700; font-size: 15px">Kling</span>
+        <span style="border: 3px solid #0A0A0A; padding: 10px 16px; font-weight: 700; font-size: 15px">Seedance</span>
+        <span style="border: 3px solid #0A0A0A; padding: 10px 16px; font-weight: 700; font-size: 15px">GPT Image</span>
+        <span style="border: 3px solid #0A0A0A; padding: 10px 16px; font-weight: 700; font-size: 15px">Soul</span>
+        <span style="border: 3px solid #0A0A0A; padding: 10px 16px; font-weight: 700; font-size: 15px; background: #1F3BFF; color: #F2F0EA">Blender</span>
+        <span style="border: 3px solid #0A0A0A; padding: 10px 16px; font-weight: 700; font-size: 15px">Claude</span>
+      </div>
+    </div>
+  </section>
 
-  section.appendChild(grid);
-  sectionsEl.appendChild(section);
-});
-</script>
+  <!-- CONTACT -->
+  <section id="contact" style="padding: clamp(56px, 8vw, 128px) clamp(20px, 3vw, 40px); background: #1F3BFF; color: #F2F0EA; border-bottom: 3px solid #0A0A0A">
+    <span class="sr" style="display: block; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px">[ есть задача? ]</span>
+    <h2 class="sr" style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: clamp(44px, 10vw, 168px); line-height: 0.88; letter-spacing: -0.055em; margin: 0; text-transform: uppercase">Давайте<br>сделаем.</h2>
+    <div class="sr" style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: clamp(32px, 5vw, 64px)">
+      <a href="https://t.me/[TELEGRAM]" class="btn" style="text-decoration: none; background: #F2F0EA; color: #0A0A0A; border: 3px solid #0A0A0A; padding: 18px 28px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 15px; min-height: 44px">Telegram ↗</a>
+      <a href="https://instagram.com/[INSTAGRAM]" class="btn" style="text-decoration: none; background: #F2F0EA; color: #0A0A0A; border: 3px solid #0A0A0A; padding: 18px 28px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 15px; min-height: 44px">Instagram ↗</a>
+      <a href="mailto:[EMAIL]" class="btn" style="text-decoration: none; background: #F2F0EA; color: #0A0A0A; border: 3px solid #0A0A0A; padding: 18px 28px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 15px; min-height: 44px">[EMAIL]</a>
+    </div>
+  </section>
 
+  <footer style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 20px clamp(20px, 3vw, 40px); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em">
+    <span>© 2026 Nurlybek</span>
+    <span>Актау — Казахстан</span>
+    <a href="#top">Наверх ↑</a>
+  </footer>
+
+</div>
 </body>
 </html>

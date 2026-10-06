@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&amp;family=IBM+Plex+Mono:wght@400;500;700&amp;display=swap">
 <style>
 body{margin:0;background:#F2F0EA}
-section{scroll-margin-top:64px}
 html{scroll-behavior:smooth}
 a{color:#0A0A0A}a:hover{color:#1F3BFF}
 *{box-sizing:border-box}
@@ -49,6 +48,52 @@ a{color:#0A0A0A}a:hover{color:#1F3BFF}
 .svc{transition:background .3s,color .3s}
 .svc:hover{background:#0A0A0A;color:#F2F0EA}
 
+
+section{scroll-margin-top:72px}
+.hero-h,h2{overflow-wrap:break-word}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center}
+.split-l{border-right:3px solid #0A0A0A}
+
+/* hover только там, где есть мышь */
+@media (hover: none){
+  .card:hover,.btn:hover{transform:none;box-shadow:none}
+  .card:active{transform:translate(-3px,-3px);box-shadow:6px 6px 0 #0A0A0A}
+  .btn:active{transform:translate(-2px,-2px);box-shadow:4px 4px 0 #0A0A0A}
+}
+
+/* планшет */
+@media (max-width: 900px){
+  .hdr{flex-direction:column}
+  .logo{border-right:0 !important;border-bottom:3px solid #0A0A0A;justify-content:space-between;padding:14px 20px !important}
+  .nav{display:grid !important;grid-template-columns:repeat(4,minmax(0,1fr))}
+  .nav a{justify-content:center;text-align:center;padding:14px 6px !important;font-size:12px}
+  .nav a:first-child{border-left:0 !important}
+  .split-l{border-right:0;border-bottom:3px solid #0A0A0A}
+}
+
+/* телефон */
+@media (max-width: 600px){
+  .hdr{position:relative !important}
+  .nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nav a{border-left:0 !important;border-bottom:3px solid #0A0A0A}
+  .nav a:nth-child(odd){border-right:3px solid #0A0A0A}
+  .nav a:nth-last-child(-n+2){border-bottom:0}
+  .meta{flex-direction:column;gap:6px !important}
+  .ctas{flex-direction:column;align-items:stretch !important}
+  .ctas .btn{width:100%}
+  .foot{flex-direction:column}
+}
+
+/* очень узкие экраны */
+@media (max-width: 360px){
+  .nav a{font-size:11px;letter-spacing:.02em !important}
+}
+
+/* большие мониторы: ограничиваем ширину текстовых блоков */
+@media (min-width: 1800px){
+  .split-l{font-size:19px !important;max-width:760px}
+}
+
 @media (prefers-reduced-motion: reduce){
   .rise,.fade,.wipe,.sr,.srw,.track,.dot{animation:none !important}
   .card,.btn,.svc{transition:none}
@@ -59,9 +104,9 @@ a{color:#0A0A0A}a:hover{color:#1F3BFF}
 <div style="font-family: 'IBM Plex Mono', ui-monospace, 'Courier New', monospace; color: #0A0A0A; background: #F2F0EA; min-height: 100vh; overflow-x: hidden">
 
   <!-- NAV -->
-  <header style="position: sticky; top: 0; z-index: 10; background: #F2F0EA; border-bottom: 3px solid #0A0A0A; display: flex; flex-wrap: wrap; align-items: stretch; justify-content: space-between">
-    <a href="#top" class="navlink" style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: 18px; letter-spacing: -0.02em; padding: 18px 24px; border-right: 3px solid #0A0A0A; display: flex; align-items: center; gap: 10px">NURLYBEK<span class="dot" style="display: inline-block; width: 10px; height: 10px; background: #1F3BFF"></span></a>
-    <nav style="display: flex; flex-wrap: wrap; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em">
+  <header class="hdr" style="position: sticky; top: 0; z-index: 10; background: #F2F0EA; border-bottom: 3px solid #0A0A0A; display: flex; flex-wrap: wrap; align-items: stretch; justify-content: space-between">
+    <a href="#top" class="navlink logo" style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: 18px; letter-spacing: -0.02em; padding: 18px 24px; border-right: 3px solid #0A0A0A; display: flex; align-items: center; gap: 10px">NURLYBEK<span class="dot" style="display: inline-block; width: 10px; height: 10px; background: #1F3BFF"></span></a>
+    <nav class="nav" style="display: flex; flex-wrap: wrap; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em">
       <a href="#works" class="navlink" style="padding: 18px 22px; border-left: 3px solid #0A0A0A; display: flex; align-items: center; min-height: 44px">Работы</a>
       <a href="#services" class="navlink" style="padding: 18px 22px; border-left: 3px solid #0A0A0A; display: flex; align-items: center; min-height: 44px">Услуги</a>
       <a href="#about" class="navlink" style="padding: 18px 22px; border-left: 3px solid #0A0A0A; display: flex; align-items: center; min-height: 44px">Обо мне</a>
@@ -71,22 +116,22 @@ a{color:#0A0A0A}a:hover{color:#1F3BFF}
 
   <!-- HERO -->
   <section id="top" style="border-bottom: 3px solid #0A0A0A; padding: clamp(32px, 5vw, 72px) clamp(20px, 3vw, 40px) 0">
-    <div class="fade d1" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: clamp(24px, 4vw, 56px)">
+    <div class="fade d1 meta" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: clamp(24px, 4vw, 56px)">
       <span>[ ПОРТФОЛИО ]</span>
       <span>Актау, Казахстан — работаю удалённо</span>
       <span>AI-визуал / моушн / кино</span>
     </div>
 
-    <h1 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: 110px; line-height: 0.88; letter-spacing: -0.055em; margin: 0; text-transform: uppercase">
+    <h1 class="hero-h" style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: clamp(30px, 9.2vw, 110px); line-height: 0.88; letter-spacing: -0.055em; margin: 0; text-transform: uppercase">
       <span class="mask"><span class="rise d1">Делаю</span></span>
       <span class="mask"><span class="rise d2" style="color: #1F3BFF">рекламу,</span></span>
       <span class="mask"><span class="rise d3">которую</span></span>
       <span class="mask"><span class="rise d4">досматривают.</span></span>
     </h1>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0; margin-top: clamp(32px, 5vw, 64px); border-top: 3px solid #0A0A0A; margin-left: calc(-1 * clamp(20px, 3vw, 40px)); margin-right: calc(-1 * clamp(20px, 3vw, 40px))">
-      <p class="fade d5" style="margin: 0; padding: 28px clamp(20px, 3vw, 40px); font-size: 17px; line-height: 1.55; border-right: 3px solid #0A0A0A">AI-генерация для брендов: предметные съёмки без студии, рекламные ролики, 3D и моушн-дизайн, кинематографичные короткие метры.</p>
-      <div class="fade d6" style="padding: 28px clamp(20px, 3vw, 40px); display: flex; flex-wrap: wrap; gap: 16px; align-items: center">
+    <div class="split" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 0; margin-top: clamp(32px, 5vw, 64px); border-top: 3px solid #0A0A0A; margin-left: calc(-1 * clamp(20px, 3vw, 40px)); margin-right: calc(-1 * clamp(20px, 3vw, 40px))">
+      <p class="fade d5 split-l" style="margin: 0; padding: 28px clamp(20px, 3vw, 40px); font-size: 17px; line-height: 1.55">AI-генерация для брендов: предметные съёмки без студии, рекламные ролики, 3D и моушн-дизайн, кинематографичные короткие метры.</p>
+      <div class="fade d6 ctas" style="padding: 28px clamp(20px, 3vw, 40px); display: flex; flex-wrap: wrap; gap: 16px; align-items: center">
         <a href="#works" class="btn" style="text-decoration: none; background: #0A0A0A; color: #F2F0EA; border: 3px solid #0A0A0A; padding: 16px 26px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 14px; min-height: 44px">Смотреть работы ↓</a>
         <a href="#contact" class="btn" style="text-decoration: none; background: #F2F0EA; color: #0A0A0A; border: 3px solid #0A0A0A; padding: 16px 26px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 14px; min-height: 44px">Обсудить проект</a>
       </div>
@@ -108,7 +153,7 @@ a{color:#0A0A0A}a:hover{color:#1F3BFF}
       <p style="margin: 0; max-width: 360px; font-size: 15px; line-height: 1.5">Коммерция, бренды и авторское кино. Нажмите на карточку, чтобы открыть видео.</p>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 28px">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(16px, 2vw, 28px)">
 
       <a href="#" class="card sr" style="text-decoration: none; color: #0A0A0A; border: 3px solid #0A0A0A; background: #F2F0EA; display: flex; flex-direction: column">
         <div class="thumb" style="aspect-ratio: 16 / 10; border-bottom: 3px solid #0A0A0A; background: #DAD7CE; display: flex; align-items: center; justify-content: center; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em">[ превью видео ]</div>
@@ -190,29 +235,29 @@ a{color:#0A0A0A}a:hover{color:#1F3BFF}
     <div class="sr" style="padding: clamp(48px, 7vw, 112px) clamp(20px, 3vw, 40px) clamp(28px, 3vw, 40px)">
       <h2 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: clamp(40px, 7vw, 112px); line-height: 0.9; letter-spacing: -0.05em; margin: 0; text-transform: uppercase">Что делаю</h2>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); border-top: 3px solid #0A0A0A">
-      <div class="svc srw" style="padding: 32px clamp(20px, 3vw, 40px); border-right: 3px solid #0A0A0A; border-bottom: 3px solid #0A0A0A; display: flex; flex-direction: column; gap: 48px; min-height: 280px">
-        <span style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: 64px; letter-spacing: -0.05em; line-height: 1">01</span>
+    <div class="svcgrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 3px; background: #0A0A0A; border-top: 3px solid #0A0A0A">
+      <div class="svc srw" style="padding: 32px clamp(20px, 3vw, 40px); background: #F2F0EA; display: flex; flex-direction: column; gap: clamp(24px, 4vw, 48px); min-height: clamp(180px, 22vw, 280px)">
+        <span style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: clamp(44px, 5vw, 64px); letter-spacing: -0.05em; line-height: 1">01</span>
         <div style="display: flex; flex-direction: column; gap: 10px"><h3 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 700; font-size: 22px; margin: 0; text-transform: uppercase">AI-реклама</h3><p style="margin: 0; font-size: 14px; line-height: 1.5">Ролики для брендов от сценария до финального монтажа.</p></div>
       </div>
-      <div class="svc srw" style="padding: 32px clamp(20px, 3vw, 40px); border-right: 3px solid #0A0A0A; border-bottom: 3px solid #0A0A0A; display: flex; flex-direction: column; gap: 48px; min-height: 280px">
-        <span style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: 64px; letter-spacing: -0.05em; line-height: 1">02</span>
+      <div class="svc srw" style="padding: 32px clamp(20px, 3vw, 40px); background: #F2F0EA; display: flex; flex-direction: column; gap: clamp(24px, 4vw, 48px); min-height: clamp(180px, 22vw, 280px)">
+        <span style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: clamp(44px, 5vw, 64px); letter-spacing: -0.05em; line-height: 1">02</span>
         <div style="display: flex; flex-direction: column; gap: 10px"><h3 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 700; font-size: 22px; margin: 0; text-transform: uppercase">Предметная съёмка</h3><p style="margin: 0; font-size: 14px; line-height: 1.5">Фото продукта в любом окружении — без студии и реквизита.</p></div>
       </div>
-      <div class="svc srw" style="padding: 32px clamp(20px, 3vw, 40px); border-right: 3px solid #0A0A0A; border-bottom: 3px solid #0A0A0A; display: flex; flex-direction: column; gap: 48px; min-height: 280px">
-        <span style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: 64px; letter-spacing: -0.05em; line-height: 1">03</span>
+      <div class="svc srw" style="padding: 32px clamp(20px, 3vw, 40px); background: #F2F0EA; display: flex; flex-direction: column; gap: clamp(24px, 4vw, 48px); min-height: clamp(180px, 22vw, 280px)">
+        <span style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: clamp(44px, 5vw, 64px); letter-spacing: -0.05em; line-height: 1">03</span>
         <div style="display: flex; flex-direction: column; gap: 10px"><h3 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 700; font-size: 22px; margin: 0; text-transform: uppercase">Моушн и 3D</h3><p style="margin: 0; font-size: 14px; line-height: 1.5">Анимация, графика для LED-экранов, визуализация в Blender.</p></div>
       </div>
-      <div class="svc srw" style="padding: 32px clamp(20px, 3vw, 40px); border-bottom: 3px solid #0A0A0A; display: flex; flex-direction: column; gap: 48px; min-height: 280px">
-        <span style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: 64px; letter-spacing: -0.05em; line-height: 1">04</span>
+      <div class="svc srw" style="padding: 32px clamp(20px, 3vw, 40px); background: #F2F0EA; display: flex; flex-direction: column; gap: clamp(24px, 4vw, 48px); min-height: clamp(180px, 22vw, 280px)">
+        <span style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: clamp(44px, 5vw, 64px); letter-spacing: -0.05em; line-height: 1">04</span>
         <div style="display: flex; flex-direction: column; gap: 10px"><h3 style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 700; font-size: 22px; margin: 0; text-transform: uppercase">Контент для соцсетей</h3><p style="margin: 0; font-size: 14px; line-height: 1.5">Рилсы, карусели и визуал, который держит единый стиль ленты.</p></div>
       </div>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); border-bottom: 3px solid #0A0A0A">
-    <div style="padding: clamp(48px, 7vw, 112px) clamp(20px, 3vw, 40px); border-right: 3px solid #0A0A0A; background: #0A0A0A; color: #F2F0EA">
+  <section id="about" class="about" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); border-bottom: 3px solid #0A0A0A">
+    <div style="padding: clamp(48px, 7vw, 112px) clamp(20px, 3vw, 40px); background: #0A0A0A; color: #F2F0EA">
       <h2 class="sr" style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: clamp(40px, 6vw, 96px); line-height: 0.9; letter-spacing: -0.05em; margin: 0; text-transform: uppercase">Обо<br>мне</h2>
       <p class="sr" style="margin: 40px 0 0; font-size: 17px; line-height: 1.6; max-width: 520px">Я Нурлыбек — делаю AI-визуал для коммерческих клиентов из Актау. Сооснователь Studio 16, студии AI-контента и моушн-дизайна. Параллельно снимаю авторские короткие метры о степи.</p>
     </div>
@@ -233,15 +278,15 @@ a{color:#0A0A0A}a:hover{color:#1F3BFF}
   <!-- CONTACT -->
   <section id="contact" style="padding: clamp(56px, 8vw, 128px) clamp(20px, 3vw, 40px); background: #1F3BFF; color: #F2F0EA; border-bottom: 3px solid #0A0A0A">
     <span class="sr" style="display: block; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px">[ есть задача? ]</span>
-    <h2 class="sr" style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: clamp(44px, 10vw, 168px); line-height: 0.88; letter-spacing: -0.055em; margin: 0; text-transform: uppercase">Давайте<br>сделаем.</h2>
-    <div class="sr" style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: clamp(32px, 5vw, 64px)">
+    <h2 class="sr" style="font-family: 'Unbounded', 'Arial Black', sans-serif; font-weight: 900; font-size: clamp(40px, 10vw, 168px); line-height: 0.88; letter-spacing: -0.055em; margin: 0; text-transform: uppercase">Давайте<br>сделаем.</h2>
+    <div class="sr ctas" style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: clamp(32px, 5vw, 64px)">
       <a href="https://t.me/[TELEGRAM]" class="btn" style="text-decoration: none; background: #F2F0EA; color: #0A0A0A; border: 3px solid #0A0A0A; padding: 18px 28px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 15px; min-height: 44px">Telegram ↗</a>
       <a href="https://instagram.com/[INSTAGRAM]" class="btn" style="text-decoration: none; background: #F2F0EA; color: #0A0A0A; border: 3px solid #0A0A0A; padding: 18px 28px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 15px; min-height: 44px">Instagram ↗</a>
       <a href="mailto:[EMAIL]" class="btn" style="text-decoration: none; background: #F2F0EA; color: #0A0A0A; border: 3px solid #0A0A0A; padding: 18px 28px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 15px; min-height: 44px">[EMAIL]</a>
     </div>
   </section>
 
-  <footer style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 20px clamp(20px, 3vw, 40px); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em">
+  <footer class="foot" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 20px clamp(20px, 3vw, 40px); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em">
     <span>© 2026 Nurlybek</span>
     <span>Актау — Казахстан</span>
     <a href="#top">Наверх ↑</a>
